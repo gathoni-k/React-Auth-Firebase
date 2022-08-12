@@ -24,7 +24,7 @@ export default function Signin() {
         .required('Email is required'),
       password: Yup.string().required('Password is required'),
     }),
-    async onSubmit(values) {
+    async onSubmit(values, { resetForm }) {
       // eslint-disable-next-line no-alert
       const errorMessage = await signinEmail(values.email, values.password);
       if (errorMessage) {
@@ -33,6 +33,7 @@ export default function Signin() {
         // redirect
         console.log('Logged in');
       }
+      resetForm({ values: '' });
     },
   });
   return (
