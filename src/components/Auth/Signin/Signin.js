@@ -1,5 +1,6 @@
 // import { useState } from 'react';
 import { MdEmail, MdLock } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import {
   useFormik,
@@ -53,9 +54,9 @@ export default function Signin() {
         {icons.map((icon) => <Button icon={icon} key={icon} />)}
       </div>
       <p className={styles.smalltext}>
-        Already a member?
+        Not a member?
         {' '}
-        <a href="/">Login</a>
+        <Link to="/signup">Register</Link>
       </p>
     </div>
 

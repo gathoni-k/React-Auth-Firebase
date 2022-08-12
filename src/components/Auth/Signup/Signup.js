@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 import {
   useFormik,
 } from 'formik';
@@ -74,7 +75,7 @@ export default function Signup() {
       <p className={styles.smalltext}>
         Already a member?
         {' '}
-        <a href="/">Login</a>
+        <Link to="/signin">Login</Link>
       </p>
     </div>
 
