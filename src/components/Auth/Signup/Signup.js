@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   useFormik,
 } from 'formik';
@@ -10,6 +10,7 @@ import { registerUserEmail } from '../../../utils/firebase';
 
 export default function Signup() {
   const [submissionError, setsubmissionError] = useState('');
+  const navigate = useNavigate();
   const icons = ['google', 'twitter', 'facebook', 'github'];
 
   const formik = useFormik({
@@ -33,6 +34,7 @@ export default function Signup() {
       } else {
         // redirect
         console.log('Registered!');
+        navigate('/');
       }
     },
   });
