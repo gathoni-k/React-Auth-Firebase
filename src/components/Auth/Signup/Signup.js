@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import {
   useFormik,
 } from 'formik';
+import { useState } from 'react';
 import styles from '../signup.module.css';
 import Button from '../Button';
+import { registerUserEmail } from '../../../utils/firebase';
 
 export default function Signup() {
+  const [submissionError, setsubmissionError] = useState('');
   const icons = ['google', 'twitter', 'facebook', 'github'];
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -22,10 +26,14 @@ export default function Signup() {
       cPassword: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Passwords must match'),
     }),
-    onSubmit(values) {
-      // eslint-disable-next-line no-alert
-      alert(`You are registered! Name: ${values.name}. Email: ${values.email}. Profession: ${values.profession}. 
-        Age: ${values.age}`);
+    async onSubmit(values) {
+      const response = await registerUserEmail(values.email, values.password);
+      if (response.error) {
+        setsubmissionError(response);
+      } else {
+        // redirect
+        console.log('Registered!');
+      }
     },
   });
   return (
@@ -38,7 +46,8 @@ export default function Signup() {
         Master web development by making real-life projects.
         There are multiple paths for you to choose
       </div>
-      <form className={styles.form}>
+      {submissionError && <div className={styles.errortext}>{submissionError}</div>}
+      <form className={styles.form} onSubmit={formik.handleSubmit}>
         <div className={styles.inputwithicon}>
           <input tabIndex="0" type="email" name="email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} className={formik.touched.email && formik.errors.email ? styles.inputerror : styles.input} placeholder="Email" />
           <div className={styles.icon} aria-hidden="true">
@@ -66,7 +75,7 @@ export default function Signup() {
         {formik.touched.cPassword && formik.errors.cPassword && (
         <span className={styles.errortext}>{formik.errors.cPassword}</span>
         )}
-        <button type="submit" className={styles.submitbutton}>Start coding now</button>
+        <button type="submit" disabled={!formik.isValid} className={styles.submitbutton}>Start coding now</button>
       </form>
       <p className={styles.smalltext}>or continue with these social profiles</p>
       <div className={styles.socialsignup}>
