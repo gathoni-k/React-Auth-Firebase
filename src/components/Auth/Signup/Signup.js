@@ -34,7 +34,7 @@ export default function Signup() {
       } else {
         // redirect
         console.log('Registered!');
-        navigate('/');
+        navigate('/', { replace: true });
       }
     },
   });
