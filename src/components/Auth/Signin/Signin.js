@@ -56,7 +56,9 @@ export default function Signin() {
       <p className={styles.smalltext}>
         Not a member?
         {' '}
-        <Link to="/signup">Register</Link>
+        <Link to="/signup">
+          <span className={styles.linktext}>Register</span>
+        </Link>
       </p>
     </div>
 
