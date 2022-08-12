@@ -110,10 +110,16 @@
     margin: 0.5rem auto;
     cursor: pointer;
     background: transparent;
+    outline: 0;
 }
 .socialiconwrapper:hover {
     opacity: 0.9;
 }
+.socialiconwrapper:focus {
+    border: 1px solid #2F80ED;
+    border-radius: 50%;
+    box-shadow: 0 0 3px 0 #2F80ED;
+  }
 .socialicon {
     font-size: 1.8rem;
     color:rgb(130, 130, 130); 
@@ -128,4 +134,8 @@
     color: #828282;
     margin-top: 2rem;
     text-align: center;
+}
+
+.errortext {
+    color: #ff4400e3;
 }

@@ -46,7 +46,7 @@ export default function Signup() {
           </div>
         </div>
         {formik.touched.email && formik.errors.email && (
-        <span className="errortext">{formik.errors.email}</span>
+        <span className={styles.errortext}>{formik.errors.email}</span>
         )}
         <div className={styles.inputwithicon}>
           <input tabIndex="0" type="password" name="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} className={formik.touched.password && formik.errors.password ? styles.inputerror : styles.input} placeholder="Password" />
@@ -55,7 +55,7 @@ export default function Signup() {
           </div>
         </div>
         {formik.touched.password && formik.errors.password && (
-        <span className="errortext">{formik.errors.password}</span>
+        <span className={styles.errortext}>{formik.errors.password}</span>
         )}
         <div className={styles.inputwithicon}>
           <input tabIndex="0" type="password" name="cPassword" value={formik.values.cPassword} onChange={formik.handleChange} onBlur={formik.handleBlur} className={formik.touched.cPassword && formik.errors.cPassword ? styles.inputerror : styles.input} placeholder="Confirm Password" />
@@ -64,7 +64,7 @@ export default function Signup() {
           </div>
         </div>
         {formik.touched.cPassword && formik.errors.cPassword && (
-        <span className="errortext">{formik.errors.cPassword}</span>
+        <span className={styles.errortext}>{formik.errors.cPassword}</span>
         )}
         <button type="submit" className={styles.submitbutton}>Start coding now</button>
       </form>

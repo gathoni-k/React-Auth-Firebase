@@ -38,14 +38,14 @@ export default function Signin() {
           <MdEmail className={styles.icon} aria-hidden="true" />
         </div>
         {formik.touched.email && formik.errors.email && (
-        <span className="errortext">{formik.errors.email}</span>
+        <span className={styles.errortext}>{formik.errors.email}</span>
         )}
         <div className={styles.inputwithicon}>
           <input tabIndex="0" type="password" name="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} className={formik.touched.password && formik.errors.password ? styles.inputerror : styles.input} placeholder="Password" />
           <MdLock className={styles.icon} aria-hidden="true" />
         </div>
         {formik.touched.password && formik.errors.password && (
-        <span className="errortext">{formik.errors.password}</span>
+        <span className={styles.errortext}>{formik.errors.password}</span>
         )}
         <button type="submit" className={styles.submitbutton}>Login</button>
       </form>
