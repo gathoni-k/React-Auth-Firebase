@@ -18,7 +18,7 @@ const auth = getAuth(app);
 export const registerUserEmail = async (email, password) => {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
-    return { error: null };
+    return null;
   } catch (error) {
     let errorMessage;
     if (error.code === 'auth/email-already-in-use') {
@@ -26,7 +26,7 @@ export const registerUserEmail = async (email, password) => {
     } else {
       errorMessage = error.message;
     }
-    return { error: errorMessage };
+    return errorMessage;
   }
 };
 
@@ -34,8 +34,16 @@ export const registerUserEmail = async (email, password) => {
 export const signinEmail = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    return { error: null };
+    return null;
   } catch (error) {
-    return { error: error.message };
+    let errorMessage = error.message;
+    if (error.code === 'auth/wrong-password') {
+      errorMessage = 'Incorrect email or password';
+    }
+    if (error.code === 'auth/user-not-found') {
+      errorMessage = 'Incorrect email or password';
+    }
+
+    return errorMessage;
   }
 };

@@ -28,7 +28,7 @@ export default function Signup() {
     }),
     async onSubmit(values) {
       const response = await registerUserEmail(values.email, values.password);
-      if (response.error) {
+      if (response) {
         setsubmissionError(response);
       } else {
         // redirect
