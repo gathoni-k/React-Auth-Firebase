@@ -1,6 +1,6 @@
 // import { useState } from 'react';
 import { MdEmail, MdLock } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import {
   useFormik,
@@ -11,6 +11,7 @@ import Button from '../Button';
 import { signinEmail } from '../../../utils/firebase';
 
 export default function Signin() {
+  const navigate = useNavigate();
   const [loginError, setLoginError] = useState(null);
   const icons = ['google', 'twitter', 'facebook', 'github'];
   const formik = useFormik({
@@ -30,8 +31,7 @@ export default function Signin() {
       if (errorMessage) {
         setLoginError(errorMessage);
       } else {
-        // redirect
-        console.log('Logged in');
+        navigate('/', { replace: true });
       }
       resetForm({ values: '' });
     },
