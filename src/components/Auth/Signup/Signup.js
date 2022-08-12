@@ -32,8 +32,6 @@ export default function Signup() {
       if (response) {
         setsubmissionError(response);
       } else {
-        // redirect
-        console.log('Registered!');
         navigate('/', { replace: true });
       }
     },
