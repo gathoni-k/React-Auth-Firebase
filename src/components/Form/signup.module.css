@@ -54,8 +54,6 @@
 .inputerror {
     composes: input;
     border: 2px solid #ff44007c;
-    /* border-color: #680707;
-    box-shadow: 0 0 3px 0 #680707; */
 }
 .input:focus {
     border-color: #2F80ED;
@@ -122,14 +120,14 @@
 }
 .smalltext {
     font-family: 'Noto Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 19px;
-letter-spacing: -0.035em;
-color: #828282;
-margin-top: 2rem;
-text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: -0.035em;
+    color: #828282;
+    margin-top: 2rem;
+    text-align: center;
 }
 .svgcolor {
     fill:"#AB7C94"
