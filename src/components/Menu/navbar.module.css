@@ -1,0 +1,93 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    position: relative;
+}
+
+.container {
+    padding: 2rem;
+}
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.userimg img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 8px;
+    object-fit: contain;
+    margin-right: 1rem;
+}
+
+.username {
+    margin-right: 1.2rem;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.035em;
+    color: #333333;
+}
+.arrow {
+    border: 1px solid #E0E0E0;
+    cursor: pointer;
+}
+.arrow img{
+    width: 1rem;
+    height: 1rem;
+}
+.usermenu {
+    position: absolute;
+    right: 2rem;
+    width: 11rem;
+    height: 100px;
+    transition: ease height .3s;
+    background-color: #fff;
+    border: 1px solid #E0E0E0;
+    padding: 1rem;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    display: none;
+
+}
+.usermenuactive {
+    composes:usermenu;
+    display: block; 
+}
+.usermenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 0px;
+}
+.usermenu ul li {
+    width: 9rem;
+    padding: 1rem;
+    cursor: pointer;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.035em;
+    
+}
+.usermenu ul li:last-child {
+    border-top: 1px solid #E0E0E0
+}
+.usermenu ul li:hover {
+    background: #F2F2F2;
+    border-radius: 8px;
+}
+.usermenu ul li img {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 1rem;
+}

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../context/Auth/AuthContext';
 import getNameFromEmail from '../../helpers/getNameFromEmail';
+import styles from './home.module.css';
 
 export default function Home() {
   const value = useContext(AuthContext);
@@ -11,6 +12,6 @@ export default function Home() {
     }
   }, [value]);
   return (
-    <div>{name || 'Login'}</div>
+    <div className={styles.container}>{name || 'Login'}</div>
   );
 }
