@@ -1,5 +1,8 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup,
+  GithubAuthProvider,
+} from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -9,7 +12,6 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
 };
-
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
@@ -45,5 +47,30 @@ export const signinEmail = async (email, password) => {
     }
 
     return errorMessage;
+  }
+};
+
+// sign in users with GitHub
+const provider = new GithubAuthProvider();
+
+export const signInWithGithub = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const credential = GithubAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    console.log(token);
+    const { user } = result;
+    console.log(user);
+    return user;
+  } catch (error) {
+    const errorCode = error.code;
+    console.log(errorCode);
+    const errorMessage = error.message;
+    console.log(errorMessage);
+    const { email } = error.customData;
+    console.log(email);
+    const credential = GithubAuthProvider.credentialFromError(error);
+    console.log(credential);
+    return error.message;
   }
 };
